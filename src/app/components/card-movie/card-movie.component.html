@@ -1,0 +1,23 @@
+<div class="w-[200px] max-sm:w-[350px] max-md:w-[250px]" *ngIf="!loading">
+    <div class="card relative cursor-pointer">
+    <img class=" w-[100%] object-cover object-center relative rounded-3xl"  [src]="cardImage" />
+        <div class="absolute -bottom-4 -left-3">
+            <circle-progress class="w-14 h-14" [showUnits]="false" [titleFontSize]="'60'" [titleFontWeight]="'800'"
+            [title]="item?.vote_average.toFixed(2)" [percent]="item?.vote_average *10" [radius]="100" [outerStrokeWidth]="14" [outerStrokeColor]="strockColor(item?.vote_average)"
+            [showInnerStroke]="false" [animation]="true" [animationDuration]="300"
+            backgroundColor="white"></circle-progress>
+            
+        </div>
+        <app-genre class="absolute bottom-2 right-2" [genres]="genres"  [genreIds]="item?.genre_ids"></app-genre>
+    </div>
+    <div class="mt-4">
+        <p class="truncate mb-0.5 text-lg">{{item?.title}} </p>
+    <span class="text-sm text-gray-400">{{ item?.release_date}}</span>
+</div>
+</div>
+
+<div *ngIf="loading">
+    <ngx-skeleton-loader animation="progress-dark" appearance="line" class="rounded-3xl" [theme]="{height: '250px'}" [count]="1" ></ngx-skeleton-loader>
+    <ngx-skeleton-loader animation="progress-dark" appearance="line" class="rounded-3xl"  [count]="1" ></ngx-skeleton-loader>
+    <ngx-skeleton-loader animation="progress-dark" appearance="line" class="rounded-3xl" [theme]="{width: '50%'}" [count]="1" ></ngx-skeleton-loader>
+</div>

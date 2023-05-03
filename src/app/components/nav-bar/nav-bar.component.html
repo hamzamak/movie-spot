@@ -1,0 +1,31 @@
+<header class="text-white  z-10 fixed w-[100%] header" >
+    <div  class="text-white flex flex-row md:justify-around md:px-1 px-6 justify-between items-center py-2" >
+        <div class="cursor-pointer" routerLink="/">
+            <img src="/assets/logo.svg" class="w-28 h-12 object-contain "/>
+          </div>
+        
+          <ul class="md:flex hidden list-none flex-row  items-center space-x-5">
+            <li class="cursor-pointer hover:text-orange-600 text-lg">Movies</li>
+            <li class="cursor-pointer hover:text-orange-600 text-lg">TV Shows</li>
+          </ul>
+        
+          <div class="flex md:hidden items-center">
+            <button class="font-bold text-[20px]" *ngIf="!toogle" (click)="setToogleMenu()">
+                <fa-icon   [icon]="barIcon"></fa-icon>
+            </button>
+      
+            <button class=" font-bold text-[20px]" *ngIf="toogle" (click)="setToogleMenu()">
+                <fa-icon   [icon]="closeIcon"></fa-icon>
+            </button>
+      
+           
+          </div>
+    </div>
+    <div *ngIf="toogle" class="bg-gray-500 w-[100%] h-[1px] mt-2 z-10 md:hidden"></div>
+    <ul *ngIf="toogle"  class="z-10 flex text-white  md:hidden flex-col list-none p-6 pt-5 space-y-3" >
+        <li class="cursor-pointer hover:text-orange-600">Movies</li>
+        <li class="cursor-pointer hover:text-orange-600">TV Shows</li>
+    </ul>
+    
+</header>
+
