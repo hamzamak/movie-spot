@@ -13,6 +13,10 @@ import { TrendingComponent } from './components/trending/trending.component';
 import { GenreComponent } from './components/genre/genre.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { PopularComponent } from './components/popular/popular.component';
+import { TopRatedComponent } from './components/top-rated/top-rated.component';
+import { DetailsComponent } from './pages/details/details.component';
+import { DetailsBannerComponent } from './components/details-banner/details-banner.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +26,12 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     SwitchTabComponent,
     CardMovieComponent,
     TrendingComponent,
-    GenreComponent
+    GenreComponent,
+    PopularComponent,
+    TopRatedComponent,
+    DetailsComponent,
+    DetailsBannerComponent,
+    
   ],
   imports: [
     BrowserModule,

@@ -6,11 +6,10 @@ import { Component ,Input } from '@angular/core';
   styleUrls: ['./card-movie.component.scss']
 })
 export class CardMovieComponent {
-  @Input() cardImage : string = "/assets/no-post.png" ;
+  @Input() cardImage !: string  ;
   @Input() item !: any;
   @Input() loading !: boolean;
   @Input () genres !: any ;
-
 
   strockColor(vote : number) : string {
     if(vote >=0 && vote <= 4)
@@ -21,4 +20,5 @@ export class CardMovieComponent {
     else return "#4caf50"; // green
   }
 
+ 
 }

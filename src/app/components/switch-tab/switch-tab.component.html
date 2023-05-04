@@ -1,4 +1,8 @@
 <div class="bg-white text-gray-700 px-1 py-0.5 rounded-3xl space-x-2">
-    <button class="disabled-switch" (click)="filter('day')" [ngClass]="{'active-switch' : switchActiveDay}" >Day</button>
-    <button class="disabled-switch"  (click)="filter('week')" [ngClass]="{'active-switch' : !switchActiveDay}"  >Week</button>
+    <button class="disabled-switch" (click)="filter(tabs[0])" [ngClass]="{'active-switch' : switchActiveDay}" >
+        {{tabs[0] === 'day' ? 'Day' : 'Movies'}}
+    </button>
+    <button class="disabled-switch"  (click)="filter(tabs[1])" [ngClass]="{'active-switch' : !switchActiveDay}"  >
+        {{tabs[1] === 'week' ? 'Week' : 'TV Shows'}}
+    </button>
 </div>

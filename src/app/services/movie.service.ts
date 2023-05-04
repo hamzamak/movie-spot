@@ -6,18 +6,11 @@ import { fetchDataFromApi } from '../utils/api';
 })
 export class MovieService {
   url!: any;
-  genres!: any;
-  trendingMoviesData!: any;
-  trendingMoviesLoading!: boolean ;
-
+//  genres!: any;
   constructor(){
     this.fetchApiConfig() ;
     this.genresCall();
-    this.getTrendingMovies('day').then((data) => { // by default will fetch trending movies for actual day
-      this.trendingMoviesLoading = true;
-      this.trendingMoviesData = data;   
-      this.trendingMoviesLoading = false;
-    });
+    
   }
 
   async fetchApiConfig  ()  {
@@ -45,7 +38,8 @@ export class MovieService {
   data.map(({ genres }) => {
       return genres.map((item:any) => (allGenres[item.id] = item));
   });
-  this.genres = allGenres;
+ // this.genres = allGenres;
+ 
   return allGenres
   };
 
@@ -67,8 +61,15 @@ export class MovieService {
     }
   }
 
-  setTrendingMovies(data : any) {
-    this.trendingMoviesData = data ;
 
+  
+  async getTopRatedMovies(endpoint : string , type_endpoint : "top_rated"|"popular") {
+
+    try {
+      const res = await fetchDataFromApi(`/${endpoint}/${type_endpoint}`);
+      return res;
+    } catch (err) {
+      throw err;
+    }
   }
 }

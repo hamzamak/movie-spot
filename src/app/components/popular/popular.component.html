@@ -1,10 +1,10 @@
 <div class="text-white md:w-[80%] m-auto w-[50%] mb-6">
     <div class="flex max-sm:flex-col flex-row  justify-between items-center mb-3">
-        <h2 class="text-start  text-2xl mb-4">Trending</h2>
-    <app-switch-tab [tabs]="['day','week']" [endpoint]="endpoint" (endpointChanged)="onEndpointChanged($event)"></app-switch-tab>
+        <h2 class="text-start  text-2xl mb-4">What's Popular</h2>
+    <app-switch-tab [tabs]="['movie','tv']" [endpoint]="endpoint" (endpointChanged)="onEndpointChanged($event)"></app-switch-tab>
     </div>
    
-    <div class="grid  sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 justify-center" >
+    <div class="grid  sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 justify-center">
         <app-card-movie [genres]="genres" [loading]="loading"  *ngFor="let item of items?.slice(0, nbSlice)" [item]="item" [cardImage]="url + item?.poster_path" ></app-card-movie>
     </div>
     <!-- <div class="grid  sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 justify-center" *ngIf="items?.length == 0 ">
