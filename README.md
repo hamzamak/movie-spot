@@ -1,5 +1,5 @@
 
-# Image Generation
+# Movie Spot
 
 An online database that provides information about movies, TV shows, actors, directors, and other film industry professionals.
 
