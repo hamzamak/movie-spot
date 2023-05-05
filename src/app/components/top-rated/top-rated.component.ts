@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { MovieService } from 'src/app/services/movie.service';
 @Component({
@@ -11,7 +11,7 @@ export class TopRatedComponent {
   faEyeHide = faEyeSlash
   nbSlice : number = 5 ;
   items !: any;
-  url !: any ;
+  @Input() url !: any ;
   endpoint : string = "movie";
   loading : boolean = false ;
   genres !:any ;
@@ -20,7 +20,6 @@ export class TopRatedComponent {
     movieService.getTopRatedMovies(this.endpoint , 'top_rated').then((data) => { 
       this.loading = true ;
       this.items = data?.results;     
-      this.url = movieService.url?.poster;  
       this.loading = false ;  
     });
 

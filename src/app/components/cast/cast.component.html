@@ -1,0 +1,14 @@
+<div class="mt-8">
+    <p class="text-3xl mb-4">Top Cast</p>
+    <div class="flex flex-row gap-8 max-md:gap-3 overflow-y-hidden scrollbar-none">
+        <div class="min-w-[160px] flex items-center flex-col" *ngFor="let c of cast">
+                    <!-- <img [src]="url?.profile + c?.profile_path" class="rounded-full  w-40 h-40 object-cover max-md:w-28 max-md:h-28" *ngIf="c?.profile_path" /> -->
+                    <img class="rounded-full object-cover  w-40 h-40 max-md:w-28 max-md:h-28" [defaultImage]="'/assets/avatar.png'" [lazyLoad]="url?.profile + c?.profile_path" *ngIf="c?.profile_path" /> 
+                    <img src="/assets/avatar.png" class="rounded-full object-cover  w-40 h-40 max-md:w-28 max-md:h-28"  *ngIf="!c?.profile_path" />
+                    <p class="text-md mt-1 text-center">{{c.name}}</p>
+                    <p class="text-sm text-gray-400  text-center">{{c.character}}</p>   
+             
+        </div>
+
+    </div>
+</div>

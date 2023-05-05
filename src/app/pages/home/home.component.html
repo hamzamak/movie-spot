@@ -1,4 +1,4 @@
-<app-banner></app-banner>
-<app-trending></app-trending>
-<app-popular></app-popular>
-<app-top-rated></app-top-rated>
+<app-banner (submitSearch)="onSearchMovies($event)" [url]="url"></app-banner>
+<app-trending [url]="url"></app-trending>
+<app-popular [url]="url"></app-popular>
+<app-top-rated [url]="url"></app-top-rated>

@@ -8,6 +8,6 @@ import { Component,Input } from '@angular/core';
 export class GenreComponent {
   @Input () genres !: any ;
   @Input () genreIds !: any ;
-  nbSlice : number = 2 ;
-
+  @Input () nbSlice : number = 2 ;
+  @Input () showAll : boolean = false ;
 }

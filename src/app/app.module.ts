@@ -17,6 +17,12 @@ import { PopularComponent } from './components/popular/popular.component';
 import { TopRatedComponent } from './components/top-rated/top-rated.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { DetailsBannerComponent } from './components/details-banner/details-banner.component';
+import { CastComponent } from './components/cast/cast.component';
+import { SimilarComponent } from './components/similar/similar.component';
+import { RecommendationComponent } from './components/recommendation/recommendation.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
+import { SearchResultsComponent } from './pages/search-results/search-results.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +37,11 @@ import { DetailsBannerComponent } from './components/details-banner/details-bann
     TopRatedComponent,
     DetailsComponent,
     DetailsBannerComponent,
-    
+    CastComponent,
+    SimilarComponent,
+    RecommendationComponent,
+    FooterComponent,
+    SearchResultsComponent,  
   ],
   imports: [
     BrowserModule,
@@ -55,6 +65,7 @@ import { DetailsBannerComponent } from './components/details-banner/details-bann
         height: '30px',
       },
     }),
+    LazyLoadImageModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

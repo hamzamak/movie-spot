@@ -1,16 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MovieService } from 'src/app/services/movie.service';
 import { fetchDataFromApi } from 'src/app/utils/api';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-cast',
+  templateUrl: './cast.component.html',
+  styleUrls: ['./cast.component.scss']
 })
-export class HomeComponent {
-  url !: any ;
-  searchState !: string ;
-  constructor(private movieService: MovieService) {
+export class CastComponent {
+  @Input() cast !:any ;
+  url !:any ;
+  @Input() loading !:boolean ;
+
+  constructor () {
     fetchDataFromApi("/configuration").then((res) => {
       const url  = {
           backdrop: res.images.secure_base_url + "original",
@@ -22,8 +24,4 @@ export class HomeComponent {
   });
   }
 
-  onSearchMovies (text : string){
-    this.searchState = text;
-    console.log(text)
-  }
 }

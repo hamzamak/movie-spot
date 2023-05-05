@@ -1,13 +1,79 @@
-<div class="h-[450px] md:h-[700px] relative flex items-center w-[100%]">
-    <img [src]="bg_image" class="w-[100%] h-[100%] top-0 left-0 opacity-10 overflow-hidden object-center md:object-cover absolute"/>
-    <div class="absolute bottom-0 left-0 h-[250px] w-[100%] opacity-layer"></div>
-    <div class="text-white  m-auto   relative items-center text-center flex flex-col">
-        <h1 class="text-4xl md:text-7xl font-bold">Welcome.</h1>
-        <h4 class="text-xl md:text-2xl mt-2 mb-8">Millions of movies, TV shows and people to discover. Explore now.</h4>
-       <div class=" flex  justify-center  md:w-[100%] w-[90%]">
-        <input type="text" class="p-4 px-6 rounded-l-full outline-none text-black md:text-lg text-sm w-[100%]" placeholder="Search for a movie or tv show...." />
-        <button class="bg-gradient-to-t from-orange-500 to-orange-700 rounded-r-full  p-4 px-6  text-sm md:text-lg">Search</button>
-       </div>
+<div class="min-h-[00px]  mb-6 ">
+ <img [src]="cardImage" class=" w-[100%] h-[100%]  opacity-10 overflow-hidden object-cover  rounded-3xl absolute top-0 left-0" />
+ <div class="text-white  m-auto relative flex lg:flex-row flex-col w-[85%] mt-24 space-x-8 max-lg:items-center">
+        <img [src]="cardImage" class="w-[400px]  object-cover rounded-3xl">
+        <div class="flex flex-col ">
+            <p class="text-4xl mb-1">{{itemDetail?.title || itemDetail?.name}}
+                <span>({{formatDate(itemDetail?.release_date, 'YYYY')}}) </span>
+            </p>
+            <p class="text-gray-500 text-[20px] italic  mb-2">{{itemDetail?.tagline}} </p>
+            <app-genre class=" mb-6"  [genres]="itemDetail?.genres"></app-genre>
+            <div class=" mb-3">
+                    <circle-progress class="w-24 h-24" [showUnits]="false" [titleFontSize]="'60'" [titleFontWeight]="'800'"
+                    [title]="itemDetail?.vote_average?.toFixed(1) +''" [percent]="itemDetail?.vote_average *10" [radius]="100" [outerStrokeWidth]="14" [outerStrokeColor]="strockColor(itemDetail?.vote_average)"
+                    [showInnerStroke]="false" [animation]="true" [animationDuration]="300"
+                    backgroundColor="white"></circle-progress>
+               
+            </div>
+
+            <div class=" mb-4">
+                <h3 class="text-3xl">Overview</h3>
+                <p class="w-10/12">{{itemDetail?.overview}} </p>
+            </div>
+
+            <div class="flex flex-row space-x-4 max-md:space-x-10 text-md my-4 max-md:text-sm">
+                <div  class=" flex xl:flex-row flex-col items-baseline ">
+                    <span class="font-bold ">Status: &nbsp;</span>
+                    <span class="text-gray-500">{{itemDetail?.status}} </span>
+                </div>
+                <div class=" flex xl:flex-row flex-col items-baseline ">
+                    <span class="font-bold ">Release Date: &nbsp; </span>
+                    <span class="text-gray-500">{{formatDate(itemDetail?.release_date, 'MMM D, YYYY')}} </span>
+                </div>
+                <div class=" flex xl:flex-row flex-col items-baseline">
+                    <span class="font-bold ">Runtime:&nbsp; </span>
+                    <span class="text-gray-500">{{toHoursAndMinutes(itemDetail?.runtime)}} </span>
+                </div>
+            </div>
+            <div class="border-[0.1px] border-gray-500 opacity-40  w-[100%]"></div>
+            <div class="flex flex-row space-x-4 text-md my-4">
+                <div  class="space-x-2">
+            
+                    <span *ngIf="getDirectors()?.length > 0" >
+                        <span class="font-bold ">Director: </span>
+                        <span *ngFor="let d of getDirectors(); let i = index">
+                            <span>{{d?.name}} {{getDirectors()?.length -
+                                1 !==
+                                i ? ", " : ''}} </span>
+                            
+                        </span>
+
+
+                    </span>
+                </div>
+            </div>
+            <div class="border-[0.1px] border-gray-500 opacity-40  w-[100%]" *ngIf="getDirectors()?.length > 0"></div>
+            <div class="flex flex-row space-x-4 text-md my-4">
+                <div  class="space-x-2">
+                    <span *ngIf="getWriters()?.length > 0" >
+                        <span class="font-bold ">Writer: </span>
+                        <span *ngFor="let w of getWriters(); let i = index">
+                            <span>{{w?.name}} {{getWriters()?.length -
+                                1 !==
+                                i ?", " : ''}} </span>
+                            
+                        </span>
+
+
+                    </span>
+                </div>
+            </div>
+            <div class="border-[0.1px] border-gray-500 opacity-40  w-[100%]" *ngIf="getWriters()?.length > 0" ></div>
+        </div>
+        
+
     </div>
-    
 </div>
+
+
+<!-- <div class="absolute -bottom-12 left-0 h-[100px] w-[100%] opacity-layer "></div> -->

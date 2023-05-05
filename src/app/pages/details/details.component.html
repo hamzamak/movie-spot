@@ -1,1 +1,6 @@
-<app-details-banner></app-details-banner>
+<div class="w-[90%] m-auto">
+    <app-details-banner [cardImage]="cardImage" [credits]="credits"  [itemDetail]="item" [loading]="loading" ></app-details-banner>
+    <app-cast [cast]="credits?.cast" [loading]="loading"></app-cast>
+    <app-similar [items]="similarMovies"  [loading]="loading"></app-similar>
+    <app-recommendation [items]="recommendedMovies" [loading]="loading"></app-recommendation>
+</div>

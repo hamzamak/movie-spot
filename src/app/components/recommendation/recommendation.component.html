@@ -1,15 +1,10 @@
-<div class="text-white md:w-[80%] m-auto w-[50%] mb-6">
-    <div class="flex max-sm:flex-col flex-row  justify-between items-center mb-3">
-        <h2 class="text-start  text-2xl mb-4">What's Popular</h2>
-    <app-switch-tab [tabs]="['movie','tv']" [endpoint]="endpoint" (endpointChanged)="onEndpointChanged($event)"></app-switch-tab>
+<div class="my-4 items-center justify-center" *ngIf="items?.length > 0">
+    <div class="mb-3">
+        <h2 class="text-start text-2xl mb-4">Recommendations</h2>
     </div>
-   
     <div class="grid  sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 justify-center">
         <app-card-movie [genres]="genres" [endpoint]="endpoint" [loading]="loading"  *ngFor="let item of items?.slice(0, nbSlice)" [item]="item" [cardImage]="url?.poster + item?.poster_path" ></app-card-movie>
     </div>
-    <!-- <div class="grid  sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 justify-center" *ngIf="items?.length == 0 ">
-        <app-card-movie [loading]="loading"  *ngFor="let item of items?.slice(0, 5)" [item]="item" [cardImage]="'/assets/no-poster.png'" ></app-card-movie>
-    </div> -->
     <button (click)="showMoreMovies()" class="bg-gradient-to-br from-orange-600 to-yellow-300 mb-2 animate-pulse p-2 rounded-xl my-2 text-md cursor-pointer px-4 text-base max-sm:w-[100%] items-start" *ngIf="nbSlice <=5 && items?.length > 5">See More 
         <fa-icon [icon]="faEye" class="ml-2"></fa-icon>
     </button>

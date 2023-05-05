@@ -5,7 +5,7 @@
     </div>
    
     <div class="grid  sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 justify-center" >
-        <app-card-movie [genres]="genres" [loading]="loading"  *ngFor="let item of items?.slice(0, nbSlice)" [item]="item" [cardImage]="url + item?.poster_path" ></app-card-movie>
+        <app-card-movie [genres]="genres" [loading]="loading" [endpoint]="endpoint" *ngFor="let item of items?.slice(0, nbSlice)" [item]="item" [cardImage]="url?.poster + item?.poster_path" ></app-card-movie>
     </div>
     <!-- <div class="grid  sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 justify-center" *ngIf="items?.length == 0 ">
         <app-card-movie [loading]="loading"  *ngFor="let item of items?.slice(0, 5)" [item]="item" [cardImage]="'/assets/no-poster.png'" ></app-card-movie>

@@ -15,6 +15,10 @@ body {
     color: white;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 .active-switch {
     background: linear-gradient(98.37deg, #f89e00 .99%, #da2f68 100%);
     font-size: 0.875rem/* 14px */;
@@ -62,6 +66,10 @@ body {
             transform: translateX(100%);
         }
     }
+}
+
+footer {
+    background: #020c1b;
 }
 
 

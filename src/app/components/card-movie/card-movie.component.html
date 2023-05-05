@@ -1,7 +1,7 @@
-<div class="w-[200px] max-sm:w-[350px] max-md:w-[250px]" *ngIf="!loading" routerLink="/details" [state]="{ item: {item, cardImage} }" >
-    <div class="card relative cursor-pointer">
-    <img class=" w-[100%] object-cover object-center relative rounded-3xl"  [src]="cardImage"  *ngIf="cardImage"  />
-    <img class=" w-[100%] object-cover object-center relative rounded-3xl"  src="/assets/no-poster.png"  *ngIf="!cardImage"  />
+<div class="w-[200px] max-sm:w-[350px] max-md:w-[250px]" *ngIf="!loading" [routerLink]="['/details', item.media_type || endpoint, item.id]"     >
+    <!-- [routerLink]="['/details', item.media_type || item.mediaType, item.id]" [state]="{ item : {cardImage , id:item.id , media_type : item.media_type || endpoint}  }" -->
+    <div class="card relative cursor-pointer" >
+        <img class=" w-[100%] object-cover object-center relative rounded-3xl" [defaultImage]="'/assets/no-poster.png'" [lazyLoad]="cardImage" /> 
         <div class="absolute -bottom-4 -left-3">
             <circle-progress class="w-14 h-14" [showUnits]="false" [titleFontSize]="'60'" [titleFontWeight]="'800'"
             [title]="item?.vote_average.toFixed(1)" [percent]="item?.vote_average *10" [radius]="100" [outerStrokeWidth]="14" [outerStrokeColor]="strockColor(item?.vote_average)"
@@ -9,7 +9,7 @@
             backgroundColor="white"></circle-progress>
             
         </div>
-        <app-genre class="absolute bottom-2 right-2" [genres]="genres"  [genreIds]="item?.genre_ids"></app-genre>
+        <app-genre  class="absolute bottom-2 right-2" [genres]="genres"  [genreIds]="item?.genre_ids"></app-genre>
     </div>
     <div class="mt-4">
         <p class="truncate mb-0.5 text-lg">{{item?.title || item?.name}} </p>

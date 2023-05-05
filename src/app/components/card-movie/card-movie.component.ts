@@ -10,7 +10,8 @@ export class CardMovieComponent {
   @Input() item !: any;
   @Input() loading !: boolean;
   @Input () genres !: any ;
-
+  @Input () endpoint !: string ;
+  nbSlice : number =2 ;
   strockColor(vote : number) : string {
     if(vote >=0 && vote <= 4)
     return "#ff0000" ; //red

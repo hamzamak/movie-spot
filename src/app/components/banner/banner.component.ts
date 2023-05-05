@@ -1,4 +1,5 @@
-import { Component,Input } from '@angular/core';
+import { Component,EventEmitter,Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { MovieService } from 'src/app/services/movie.service';
 import { fetchDataFromApi } from 'src/app/utils/api';
 
@@ -10,14 +11,22 @@ import { fetchDataFromApi } from 'src/app/utils/api';
 export class BannerComponent {
   bg_image !: string;
   loading !: boolean;
-
-  constructor(private movieService : MovieService) {
+  @Input() url !: any ;
+  @Output() submitSearch = new EventEmitter<string> ();
+  constructor(private movieService : MovieService ,private router : Router) {
     movieService.getUpComingMoviBackgroundImage().then((data) => {
       this.loading = true;
-      this.bg_image = movieService.url?.backdrop + data?.results?.[Math.floor(Math.random() * 20)]?.backdrop_path;
+      this.bg_image = this.url?.backdrop + data?.results?.[Math.floor(Math.random() * 20)]?.backdrop_path;
       this.loading = false;
     });
     
     
+  }
+
+  onSubmit(input : string = "") {
+    this.submitSearch.emit(input)
+    // navigate  ????????????????????????
+    if(input)
+    this.router.navigateByUrl(`/search/${input}`)
   }
 }
