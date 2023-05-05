@@ -1,6 +1,5 @@
 import axios from "axios";
 import { environment } from "src/environments/environment.development";
-
 const BASE_URL = "https://api.themoviedb.org/3";
 const TMDB_TOKEN = environment.TMDB_TOKEN;
 
