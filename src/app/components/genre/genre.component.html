@@ -1,7 +1,7 @@
 <div class="flex flex-row space-x-2 " *ngIf="genreIds" >  
     <!-- si genreIds null c'est que je veux afficher tous les genres -->
     <div *ngFor="let g of genreIds.slice(0, nbSlice)" class="bg-rose-600 p-0.5 px-1 rounded-lg max-md:px-4 max-md:py-1" >
-        <div  class="text-white text-[11px] max-md:text-[14px] truncate">
+        <div  class="text-white text-[10px] max-md:text-[14px] truncate">
             {{genres?.[g]?.name}}
         </div>
     </div>

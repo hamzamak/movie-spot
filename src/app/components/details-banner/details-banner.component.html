@@ -1,7 +1,7 @@
 <div class="min-h-[00px]  mb-6 ">
  <img [src]="cardImage" class=" w-[100%] h-[100%]  opacity-10 overflow-hidden object-cover  rounded-3xl absolute top-0 left-0" />
  <div class="text-white  m-auto relative flex lg:flex-row flex-col w-[85%] mt-24 space-x-8 max-lg:items-center">
-        <img [src]="cardImage" class="w-[400px]  object-cover rounded-3xl">
+        <img class="w-[400px]  object-cover rounded-3xl" [defaultImage]="'/assets/no-poster.png'" [lazyLoad]="cardImage" /> 
         <div class="flex flex-col ">
             <p class="text-4xl mb-1">{{itemDetail?.title || itemDetail?.name}}
                 <span>({{formatDate(itemDetail?.release_date, 'YYYY')}}) </span>
